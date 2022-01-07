@@ -65,6 +65,7 @@ return packer.startup(function(use)
   use "fedorov7/vim-uefi"
   use "fedorov7/ksslint"
   use "b0o/mapx.nvim"
+  use "rcarriga/nvim-notify"
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -87,9 +88,17 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "simrat39/symbols-outline.nvim"
+  use "ray-x/lsp_signature.nvim"
+  use "b0o/SchemaStore.nvim"
+  use {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  }
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
+  use "nvim-telescope/telescope-media-files.nvim"
 
   -- Treesitter
   use {
@@ -97,6 +106,8 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
+  use "ChristianChiarulli/nvim-ts-rainbow"
+  use "mizlan/iswap.nvim"
 
   -- Git
   use "lewis6991/gitsigns.nvim"
