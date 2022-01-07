@@ -67,3 +67,11 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
+-- Hop plugin
+local status_ok, hop = pcall(require, "hop")
+if status_ok then
+	hop.setup()
+	-- place this in one of your configuration file(s)
+	keymap("", "<C-s>", ":HopChar2<cr>", opts)
+	keymap("", "S", ":HopWord<cr>", opts)
+end
