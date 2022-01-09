@@ -14,7 +14,7 @@ local setup = {
     -- the presets plugin, adds help for a bunch of default keybindings in Neovim
     -- No actual key bindings are created
     presets = {
-      operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+      operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
       motions = true, -- adds help for motions
       text_objects = true, -- help for text objects triggered after entering an operator
       windows = true, -- default bindings on <c-w>
@@ -25,7 +25,7 @@ local setup = {
   },
   -- add operators that will trigger motion and text object completion
   -- to enable all native operators, set the preset / operators plugin above
-  -- operators = { gc = "Comments" },
+  operators = { gc = "Comments" },
   key_labels = {
     -- override the label used to display some keys. It doesn't effect WK in any other way.
     -- For example:
@@ -85,10 +85,6 @@ local mappings = {
     "Buffers",
   },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["w"] = { "<cmd>w!<CR>", "Save" },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
-  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-  ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
@@ -158,6 +154,8 @@ local mappings = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Workspace Symbols",
     },
+    F = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Open float" },
+    h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "SignatureHelp" },
   },
   s = {
     name = "Search",
@@ -184,8 +182,33 @@ local mappings = {
 
   x = {
     name = "Trouble",
+    x = { "<cmd>Trouble<CR>", "Trouble open" },
+    w = { "<cmd>Trouble workspace_diagnostics<CR>", "Trouble Workspace Diagnostics" },
+    d = { "<cmd>Trouble document_diagnostics<CR>", "Trouble Document Diagnostics" },
+    l = { "<cmd>Trouble loclist<CR>", "Trouble Local List" },
+    q = { "<cmd>Trouble quickfix<CR>", "Trouble QuickFix" },
   },
+}
+
+local short_opts = {
+  mode = "n", -- NORMAL mode
+  prefix = "",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
+local short_mappings = {
+  gD = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },
+  gd = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
+  gK = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
+  gi = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to implementation" },
+  gr = { "<cmd>lua vim.lsp.buf.references()<CR>", "Go to reference" },
+  gR = { "<cmd>Trouble lsp_references<CR>", "Trouble LSP Reference" },
+  gl = { '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', "Line diagnostics" },
 }
 
 which_key.setup(setup)
 which_key.register(mappings, opts)
+which_key.register(short_mappings, short_opts)
