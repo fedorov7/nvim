@@ -8,11 +8,11 @@ m.vnoremap([[<C-C>]], [["+y]], "Copy to system clipboard")
 
 -- cscope
 if vim.fn.has("cscope") == 1 then
-	vim.api.nvim_set_option("csto", 0)
-	vim.api.nvim_set_option("cst", true)
-	if vim.fn.filereadable("cscope.out") == 1 then
-		vim.api.nvim_command("silent cscope add cscope.out")
-	end
+  vim.api.nvim_set_option("csto", 0)
+  vim.api.nvim_set_option("cst", true)
+  if vim.fn.filereadable("cscope.out") == 1 then
+    vim.api.nvim_command("silent cscope add cscope.out")
+  end
 end
 m.nmap([[<C-\>s]], [[:cs find s <C-R>=expand("<cword>")<CR><CR>]], "Find this C symbol")
 m.nmap([[<C-\>g]], [[:cs find g <C-R>=expand("<cword>")<CR><CR>]], "Find this definition")
@@ -25,18 +25,18 @@ m.nmap([[<C-\>i]], [[:cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>]], "Find files
 m.nmap([[<C-\>e]], [[:cs find a <C-R>=expand("<cword>")<CR><CR>]], "Find places where this symbol is assigned a value")
 
 local function cscope_create_database()
-	local job = Job:new({
-		command = "cscope",
-		args = { "-bcqR" },
-		on_exit = function(_, retval)
-			if retval == 0 then
-				print("cscope database created")
-			else
-				print("cscope database failed")
-			end
-		end,
-	})
-	job:start()
+  local job = Job:new({
+    command = "cscope",
+    args = { "-bcqR" },
+    on_exit = function(_, retval)
+      if retval == 0 then
+        print("cscope database created")
+      else
+        print("cscope database failed")
+      end
+    end,
+  })
+  job:start()
 end
 m.cmd("CscopeCreateDatabase", cscope_create_database, { nargs = 0 })
 m.nnoremap([[<F5>]], [[<Cmd>CscopeCreateDatabase<CR>]], "Update cscope database")
