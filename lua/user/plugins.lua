@@ -65,6 +65,7 @@ return packer.startup(function(use)
   use "fedorov7/ksslint"
   use "b0o/mapx.nvim"
   use "rcarriga/nvim-notify"
+  use "mbbill/fencview"
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
