@@ -80,17 +80,12 @@ local opts = {
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-  ["b"] = {
-    "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-    "Buffers",
-  },
+  ["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-    "Find files",
-  },
+  ["f"] = { "<cmd>Telescope find_files<>cr", "Find files" },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
+  ["h"] = { "<cmd>Telescope grep_string<cr>", "Search for string under cursor" },
 
   p = {
     name = "Packer",
