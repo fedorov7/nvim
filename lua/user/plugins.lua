@@ -67,6 +67,7 @@ return packer.startup(function(use)
   use("rcarriga/nvim-notify")
   use("mbbill/fencview")
   use("ntpeters/vim-better-whitespace")
+  use({ "vivien/vim-linux-coding-style", cmd = "LinuxCodingStyle" })
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
