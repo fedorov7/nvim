@@ -94,6 +94,9 @@ return packer.startup(function(use)
   use("ray-x/lsp_signature.nvim")
   use("b0o/SchemaStore.nvim")
 
+  -- Copilot
+  use("github/copilot.vim")
+
   use({
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
