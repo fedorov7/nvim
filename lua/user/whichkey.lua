@@ -206,6 +206,7 @@ local short_mappings = {
   gK = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
   gR = { "<cmd>Trouble lsp_references<CR>", "Trouble LSP Reference" },
   gl = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line diagnostics" },
+  gs = { ":StripWhitespace<CR>", "Strip whitespace" },
 }
 
 local visual_opts = {
