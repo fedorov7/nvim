@@ -208,6 +208,21 @@ local short_mappings = {
   gl = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line diagnostics" },
 }
 
+local visual_opts = {
+  mode = "v", -- VISUAL mode
+  prefix = "",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
+local visual_mappings = {
+  f = { ":lua vim.lsp.buf.range_formatting()<CR>", "Format" },
+  s = { ":!sort<CR>", "Sort" },
+}
+
 which_key.setup(setup)
 which_key.register(mappings, opts)
 which_key.register(short_mappings, short_opts)
+which_key.register(visual_mappings, visual_opts)

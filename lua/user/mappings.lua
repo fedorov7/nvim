@@ -42,6 +42,4 @@ m.cmd("CscopeCreateDatabase", cscope_create_database, { nargs = 0 })
 m.nnoremap([[<F5>]], [[<Cmd>CscopeCreateDatabase<CR>]], "Update cscope database")
 
 -- common
---	cscope -bcqR
 m.nnoremap([[<F12>]], [[<Cmd>NvimTreeToggle<CR>]], "Toogle NvimTree")
-m.nnoremap([[<leader>cf]], [[<Cmd>lua vim.lsp.buf.formatting()<CR>]], "Auto Format")
