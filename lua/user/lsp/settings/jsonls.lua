@@ -169,7 +169,7 @@ local schemas = {
 }
 
 local function extend(tab1, tab2)
-  for _, value in ipairs(tab2) do
+  for _, value in ipairs(tab2 or {}) do
     table.insert(tab1, value)
   end
   return tab1
@@ -187,7 +187,7 @@ local opts = {
     commands = {
       Format = {
         function()
-          vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line "$", 0 })
+          vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
         end,
       },
     },
