@@ -5,7 +5,7 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "jsonls", "sumneko_lua", "clangd", "cmake" }
+local servers = { "jsonls", "sumneko_lua", "clangd", "cmake", "pyright" }
 
 lsp_installer.setup({
   ensure_installed = servers,
