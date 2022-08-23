@@ -94,7 +94,7 @@ return packer.startup(function(use)
   use("b0o/SchemaStore.nvim")
 
   -- Copilot
-  use("github/copilot.vim")
+  -- use("github/copilot.vim")
 
   use({
     "folke/trouble.nvim",
